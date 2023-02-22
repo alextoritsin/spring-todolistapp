@@ -6,7 +6,7 @@ import ru.toribicks.todolistapp.models.TodoItem;
 import ru.toribicks.todolistapp.repositories.TodoItemRepository;
 
 import java.time.Instant;
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,7 +15,7 @@ public class TodoItemService {
   @Autowired
   private TodoItemRepository todoItemRepository;
 
-  public Iterable<TodoItem> getAllTodoItems() {
+  public List<TodoItem> getAllTodoItems() {
     return todoItemRepository.findAll();
   }
 
@@ -24,7 +24,7 @@ public class TodoItemService {
   }
 
   public TodoItem saveTodoItem(TodoItem todoItem) {
-     if (Objects.isNull(todoItem.getId())) {
+     if (todoItem.getId() == 0) {
        todoItem.setCreatedAt(Instant.now());
      }
 

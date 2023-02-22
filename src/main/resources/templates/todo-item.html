@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+    <title>Todo List</title>
+</head >
+<body>
+<div class="container">
+    <h1>Todo List Application</h1>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-2">
+            <p><a class="btn btn-outline-success" href="/">
+                <i class="bi bi-arrow-left-square-fill"></i> Back</a>
+            </p>
+        </div>
+        <div class="col-6">
+            <h2 th:text="${todoItem.id} == 0 ?
+            'Add a new Todo Item' : 'Update Todo Item'"/>
+            <form action="#" th:action="@{/todo}" th:object="${todoItem}" method="POST">
+                <div class="form-group">
+                    <label for="descriotion">Description</label>
+                    <input type="hidden"
+                        th:field="*{id}"
+                        id="itemId">
+                    <input class="form-control mb-1" type="text"
+                        th:field="*{description}"
+                        id="descriotion"
+                        placeholder="Description">
+
+                    <button type="submit" class="btn btn-outline-success me-1">
+                        <i class="bi bi-plus-square-fill"></i>
+                        <span th:text="${todoItem.id} == 0 ?
+                        'Add Todo' : 'Update Todo'"/>
+                    </button>
+
+                    <div th:if="${todoItem.id != 0}" class="form-check form-switch form-check-inline">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               role="switch"
+                               id="flexSwitchCheckChecked"
+                               th:field="*{isComplete}"
+                               th:checked="${isComplete} == true">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Completed?</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
