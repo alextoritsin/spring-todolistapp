@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.toribicks.todolistapp.models.TodoItem;
 import ru.toribicks.todolistapp.services.TodoItemService;
 
+import java.time.Instant;
+
 @Controller
 public class HomeController {
   @Autowired
@@ -31,12 +33,16 @@ public class HomeController {
 
   @PostMapping("/todo")
   public String createTodoItem(@Valid TodoItem todoItem, BindingResult result, Model model) {
-    TodoItem item = new TodoItem();
-
-    item.setDescription(todoItem.getDescription());
-    item.setIsComplete(todoItem.getIsComplete());
-
+    if (todoItem.getId() != 0) {
+      todoItem.setUpdatedAt(Instant.now());
+    }
     todoItemService.saveTodoItem(todoItem);
+//    TodoItem item = new TodoItem();
+//
+//    item.setDescription(todoItem.getDescription());
+//    item.setIsComplete(todoItem.getIsComplete());
+//
+//    todoItemService.saveTodoItem(todoItem);
     return "redirect:/";
   }
 
