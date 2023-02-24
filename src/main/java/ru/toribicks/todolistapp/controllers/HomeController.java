@@ -27,22 +27,19 @@ public class HomeController {
   }
 
   @GetMapping("/create-todo")
-  public String showCreateForm(TodoItem todoItem) {
+  public String showCreateForm(Model model) {
+    TodoItem todoItem = new TodoItem();
+    model.addAttribute(todoItem);
     return "todo-item";
   }
 
   @PostMapping("/todo")
-  public String createTodoItem(@Valid TodoItem todoItem, BindingResult result, Model model) {
+  public String createTodoItem(@Valid TodoItem todoItem) {
     if (todoItem.getId() != 0) {
       todoItem.setUpdatedAt(Instant.now());
     }
+
     todoItemService.saveTodoItem(todoItem);
-//    TodoItem item = new TodoItem();
-//
-//    item.setDescription(todoItem.getDescription());
-//    item.setIsComplete(todoItem.getIsComplete());
-//
-//    todoItemService.saveTodoItem(todoItem);
     return "redirect:/";
   }
 
