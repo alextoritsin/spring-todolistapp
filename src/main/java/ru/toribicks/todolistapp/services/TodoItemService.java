@@ -28,7 +28,6 @@ public class TodoItemService {
        todoItem.setCreatedAt(Instant.now());
      }
 
-     todoItem.setUpdatedAt(Instant.now());
      return todoItemRepository.save(todoItem);
   }
 

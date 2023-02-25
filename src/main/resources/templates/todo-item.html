@@ -14,17 +14,22 @@
     <h1>Todo List Application</h1>
     <hr>
     <div class="row mt-5">
+        <!--  Back button   -->
         <div class="col-1">
             <p><a class="btn btn-outline-secondary" href="/">
                 <i class="bi bi-arrow-left-square-fill"></i></a>
             </p>
         </div>
+
+
         <div class="col-6">
             <div class="row">
                 <div class="col-auto me-auto">
                     <h2 class="my-auto d-inline-block fs-3" th:text="${todoItem.id} == 0 ?
                     'Add a new Todo Item' : 'Update Todo Item'"/>
                 </div>
+
+                <!--   Delete button   -->
                 <div class="col-auto">
                     <th:block th:if="${todoItem.id != 0}">
                         <a type="button" class="btn btn-sm btn-outline-danger d-inline-block align-top mt-1"
@@ -33,6 +38,7 @@
                         </a>
                     </th:block>
                 </div>
+
             </div>
 
             <form th:action="@{/todo}" th:object="${todoItem}" method="POST">
@@ -43,16 +49,19 @@
                     <input type="hidden" th:field="*{id}" id="todoId">
                     <input type="hidden" th:field="*{createdAt}" id="todoCreatedAt">
 
-                    <!-- Description field -->
+                    <!-- Description field with validation -->
                     <input class="form-control my-1 bi-type-italic" type="text"
                         th:field="*{description}"
                         id="descriotion"
                         placeholder="What needs to be done?"
                     >
+                    <div class="text-danger" style="font-size: xx-small"
+                         th:if="${#fields.hasErrors('description')}"
+                         th:errors="*{description}"></div>
 
                     <!--   Standard submit button                 -->
                     <button type="submit" class="btn btn-outline-success me-1 mt-1">
-                        <i class="bi bi-plus-square-fill"></i>
+                        <i th:if="${todoItem.id == 0}" class="bi bi-plus-square-fill"></i>
                         <span th:text="${todoItem.id} == 0 ?
                         'Add Todo' : 'Update Todo'"/>
                     </button>
@@ -67,7 +76,6 @@
                                th:checked="${todoItem.isComplete} == true">
                         <label class="form-check-label" for="completeFlag">Completed?</label>
                     </div>
-
                 </div>
             </form>
         </div>
