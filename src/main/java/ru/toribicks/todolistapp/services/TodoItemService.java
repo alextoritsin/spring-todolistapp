@@ -23,12 +23,12 @@ public class TodoItemService {
     return todoItemRepository.findById(id);
   }
 
-  public TodoItem saveTodoItem(TodoItem todoItem) {
+  public void saveTodoItem(TodoItem todoItem) {
      if (todoItem.getId() == 0) {
        todoItem.setCreatedAt(Instant.now());
      }
 
-     return todoItemRepository.save(todoItem);
+    todoItemRepository.save(todoItem);
   }
 
   public void deleteTodoItem(TodoItem todoItem) {
