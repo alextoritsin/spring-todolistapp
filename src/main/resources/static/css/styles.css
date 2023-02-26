@@ -10,7 +10,7 @@ a.btn-danger {
 div.row {
     border: 2px solid #00000015;
     border-radius: 2px;
-    padding: 3px 0px 3px 0px;
+    padding: 3px 0 3px 0;
     color: black;
     background-color: #dbdbdb6e;
 }

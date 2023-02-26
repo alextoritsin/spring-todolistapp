@@ -37,11 +37,6 @@
                             <input class="btn btn-sm btn-outline-danger align-top mt-1"
                                    type="submit" value="Delete"/>
                         </form>
-<!--                        <a type="button" class="btn btn-sm btn-outline-danger d-inline-block align-top mt-1"-->
-<!--                           th:action="@{/delete/{id}(id=${todoItem.id})}"-->
-<!--                           th:method="DELETE">-->
-<!--                            <i class="bi bi-trash-fill"></i>Delete-->
-<!--                        </a>-->
                     </th:block>
                 </div>
 
@@ -49,7 +44,7 @@
 
             <form th:action="@{/todoitems}" th:object="${todoItem}" th:method="POST">
                 <div class="form-group">
-                    <label for="descriotion">Description</label>
+                    <label for="description">Description</label>
 
                     <!-- ID and createdAt hidden fields -->
                     <input type="hidden" th:field="*{id}" id="todoId">
@@ -58,7 +53,7 @@
                     <!-- Description field with validation -->
                     <input class="form-control my-1 bi-type-italic" type="text"
                         th:field="*{description}"
-                        id="descriotion"
+                        id="description" name="description"
                         placeholder="What needs to be done?"
                     >
                     <div class="text-danger" style="font-size: xx-small"

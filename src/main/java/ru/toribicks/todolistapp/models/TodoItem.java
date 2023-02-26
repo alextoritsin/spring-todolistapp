@@ -4,16 +4,18 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.time.Instant;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "todo_items")
-public class TodoItem implements Serializable {
+public class TodoItem {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
@@ -23,6 +25,10 @@ public class TodoItem implements Serializable {
   private String description;
   private Boolean isComplete;
   private Instant createdAt;
+
+  public TodoItem(String description) {
+    this.description = description;
+  }
 
   @Override
   public String toString() {

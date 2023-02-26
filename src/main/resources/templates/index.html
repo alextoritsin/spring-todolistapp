@@ -12,6 +12,7 @@
     <div class="container w-60 border">
         <h1>Todo List Application</h1>
         <hr>
+
         <!-- When we haven't todoitems  -->
         <th:block th:if="${todoItems.size() == 0}">
             <h4>Welcome!</h4>
@@ -36,6 +37,7 @@
                 </a>
             </div>
         </th:block>
+
         <!--  Create new todoitem button  -->
         <p class="my-2"><a class="btn btn-outline-success" href="/todoitems/new">
             <i class="bi bi-plus-square-fill"></i>Create a Todo</a>
