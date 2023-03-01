@@ -22,7 +22,7 @@
         <!--    When todoitems added      -->
         <th:block th:unless="${todoItems.size() == 0}">
             <div class="my-2">
-                <a th:each="item : ${todoItems}" class="todoItemBlock" th:href="@{/edit/{id}(id=${item.id})}">
+                <a th:each="item : ${todoItems}" class="todoItemBlock" th:href="@{/todoitem/{id}(id=${item.id})}">
                     <div class="row border-light w-75 border mx-0">
                         <div class="col-8 my-auto">
                             <p th:classappend="${item.isComplete} ?

@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service
 public class TodoItemService {
 
+  private final TodoItemRepository todoItemRepository;
+
   @Autowired
-  private TodoItemRepository todoItemRepository;
+  public TodoItemService(TodoItemRepository todoItemRepository) {
+    this.todoItemRepository = todoItemRepository;
+  }
 
   public List<TodoItem> getAllTodoItems() {
     return todoItemRepository.findAll();
@@ -31,7 +35,7 @@ public class TodoItemService {
     todoItemRepository.save(todoItem);
   }
 
-  public void deleteTodoItem(TodoItem todoItem) {
-    todoItemRepository.delete(todoItem);
+  public void deleteTodoItemById(Long id) {
+    todoItemRepository.deleteById(id);
   }
 }

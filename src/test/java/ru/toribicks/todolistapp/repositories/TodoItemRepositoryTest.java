@@ -1,7 +1,5 @@
 package ru.toribicks.todolistapp.repositories;
 
-//import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,9 +11,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.toribicks.todolistapp.models.TodoItem;
 
 import java.util.List;
-import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
